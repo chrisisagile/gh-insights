@@ -18,7 +18,7 @@
     "test:vscode": "jest",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
-    "prepare": "npm run build"
+    "prepare": "husky"
   },
   "keywords": [
     "github",
