@@ -1,0 +1,279 @@
+{
+  "user": "chrisisagile",
+  "generatedAt": "2025-07-03T19:49:16.996Z",
+  "summary": {
+    "totalPRs": 590,
+    "openPRs": 0,
+    "closedPRs": 0,
+    "mergedPRs": 0,
+    "mergeRate": "0.0"
+  },
+  "repositories": [
+    {
+      "repo": "rhythmicai/rhythmic",
+      "count": 588
+    },
+    {
+      "repo": "rhythmicai/McpExploration",
+      "count": 2
+    }
+  ],
+  "monthlyActivity": [
+    {
+      "month": "2025-06",
+      "count": 38
+    },
+    {
+      "month": "2025-05",
+      "count": 52
+    },
+    {
+      "month": "2025-04",
+      "count": 2
+    },
+    {
+      "month": "2025-03",
+      "count": 68
+    },
+    {
+      "month": "2025-02",
+      "count": 35
+    },
+    {
+      "month": "2025-01",
+      "count": 50
+    },
+    {
+      "month": "2024-12",
+      "count": 82
+    },
+    {
+      "month": "2024-11",
+      "count": 94
+    },
+    {
+      "month": "2024-10",
+      "count": 67
+    },
+    {
+      "month": "2024-09",
+      "count": 62
+    },
+    {
+      "month": "2024-08",
+      "count": 40
+    }
+  ],
+  "recentPRs": [
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 645,
+      "title": "Add JSDoc for all repository methods",
+      "state": "merged",
+      "createdAt": "2025-06-24T15:16:56Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 644,
+      "title": "Add prompt file examples",
+      "state": "merged",
+      "createdAt": "2025-06-23T20:36:37Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 643,
+      "title": "Add Jest wrapper scripts for VS Code integration to handle CLI changes",
+      "state": "merged",
+      "createdAt": "2025-06-23T20:04:57Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 641,
+      "title": "main -> 630 refresh",
+      "state": "merged",
+      "createdAt": "2025-06-23T19:25:48Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 640,
+      "title": "fix: Update access control in HarmonyPackageBoard models to allow all…",
+      "state": "merged",
+      "createdAt": "2025-06-23T14:20:51Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 638,
+      "title": "main to 629",
+      "state": "merged",
+      "createdAt": "2025-06-23T06:51:14Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 637,
+      "title": "fix: Update workspaceId assignment in createNewCard method for accura…",
+      "state": "merged",
+      "createdAt": "2025-06-23T06:49:43Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 636,
+      "title": "fix: Update workspaceId assignment in KanbanService to use the correc…",
+      "state": "merged",
+      "createdAt": "2025-06-23T06:41:09Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 635,
+      "title": "Copilot/fix 624",
+      "state": "merged",
+      "createdAt": "2025-06-23T06:29:54Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 627,
+      "title": "refactor: Remove unused fields and commented-out code in BoardHandler…",
+      "state": "merged",
+      "createdAt": "2025-06-23T05:48:15Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 621,
+      "title": "Copilot/fix 601",
+      "state": "merged",
+      "createdAt": "2025-06-21T07:37:10Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 616,
+      "title": "main to 601",
+      "state": "merged",
+      "createdAt": "2025-06-21T05:24:46Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 615,
+      "title": "Copilot/fix 606",
+      "state": "merged",
+      "createdAt": "2025-06-21T04:16:46Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 614,
+      "title": "Main to 606",
+      "state": "merged",
+      "createdAt": "2025-06-20T04:27:49Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 613,
+      "title": "fix: update import path for prisma in import.post.ts files",
+      "state": "merged",
+      "createdAt": "2025-06-20T03:09:49Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 612,
+      "title": "Copilot/fix 590",
+      "state": "merged",
+      "createdAt": "2025-06-20T03:05:09Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 611,
+      "title": "Merge Main to 590 to resolve upstream conflicts",
+      "state": "merged",
+      "createdAt": "2025-06-20T03:00:34Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 610,
+      "title": "Comment out unused syncSelectedItems function in index.vue",
+      "state": "merged",
+      "createdAt": "2025-06-20T02:55:12Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 609,
+      "title": "Copilot/fix 590",
+      "state": "merged",
+      "createdAt": "2025-06-20T02:44:17Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 571,
+      "title": "Superuser",
+      "state": "merged",
+      "createdAt": "2025-06-14T07:25:22Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 570,
+      "title": "Superuser",
+      "state": "merged",
+      "createdAt": "2025-06-14T06:52:53Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 569,
+      "title": "feat: implement workspace provisioning and update subscription handli…",
+      "state": "merged",
+      "createdAt": "2025-06-14T03:48:40Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 568,
+      "title": "feat: add WorkspaceNewTeamCard component for team creation and update…",
+      "state": "merged",
+      "createdAt": "2025-06-14T02:18:35Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 567,
+      "title": "feat: enhance MainHeader and harmony-detail layout with new board/doc…",
+      "state": "merged",
+      "createdAt": "2025-06-12T19:26:00Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 566,
+      "title": "feat: add AriaWidget component and enhance MainHeader with chat toggl…",
+      "state": "merged",
+      "createdAt": "2025-06-12T16:20:36Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 565,
+      "title": "feat: remove unused Storyblok components and Tailwind configuration",
+      "state": "merged",
+      "createdAt": "2025-06-12T15:50:22Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 564,
+      "title": "feat: enhance ChatInput with custom dropdown for mode selection and i…",
+      "state": "merged",
+      "createdAt": "2025-06-10T19:59:03Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 563,
+      "title": "feat: implement team ID fetching in KanbanService; add new API endpoi…",
+      "state": "merged",
+      "createdAt": "2025-06-10T19:25:07Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 562,
+      "title": "fix: remove debug console logs for incomplete <stories> tag handling …",
+      "state": "merged",
+      "createdAt": "2025-06-10T18:24:47Z"
+    },
+    {
+      "repo": "rhythmicai/rhythmic",
+      "number": 561,
+      "title": "feat: enhance callModelNode prompt handling and improve ChatBubble me…",
+      "state": "merged",
+      "createdAt": "2025-06-10T15:38:24Z"
+    }
+  ]
+}

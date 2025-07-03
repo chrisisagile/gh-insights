@@ -1,0 +1,183 @@
+{
+  "config": {
+    "reviewFocus": "test coverage",
+    "prSelection": "last 5",
+    "outputDir": "./test-username"
+  },
+  "selectedPRs": [
+    {
+      "repository": {
+        "nameWithOwner": "rhythmicai/rhythmic"
+      },
+      "number": 645,
+      "state": "MERGED",
+      "title": "Add JSDoc for all repository methods",
+      "body": "## Summary\n- document every public method in repository implementations with JSDoc\n- expand comments across BoardWorkitem, Tag, Workspace and other repositories\n\n## Testing\n- `pnpm test` *(fails: cannot find modules)*\n\n------\nhttps://chatgpt.com/codex/tasks/task_e_685ab3d724b4832d965effc16aa71e28",
+      "createdAt": "2025-06-24T15:16:56Z",
+      "closedAt": "2025-06-24T15:17:15Z",
+      "mergedAt": "2025-06-24T15:17:15Z",
+      "author": {
+        "login": "chrisisagile"
+      },
+      "labels": [
+        {
+          "name": "codex"
+        }
+      ],
+      "url": "https://github.com/rhythmicai/rhythmic/pull/645"
+    },
+    {
+      "repository": {
+        "nameWithOwner": "rhythmicai/rhythmic"
+      },
+      "number": 644,
+      "state": "MERGED",
+      "title": "Add prompt file examples",
+      "body": "## Summary\n- add React and REST API prompt examples\n- include new prompts for Vue components, Nuxt pages, design system styles, integrations API, ZenStack database patterns, AI workflows, testing patterns, and documentation snippets\n\n## Testing\n- `pnpm test` *(fails: Cannot find module '@rhythmic/db/zenstack' from '../../packages/db/src/enhance.ts')*\n\n------\nhttps://chatgpt.com/codex/tasks/task_e_6859b51b5414832dba542f435aa88aa5",
+      "createdAt": "2025-06-23T20:36:37Z",
+      "closedAt": "2025-06-23T20:37:48Z",
+      "mergedAt": "2025-06-23T20:37:48Z",
+      "author": {
+        "login": "chrisisagile"
+      },
+      "labels": [
+        {
+          "name": "codex"
+        }
+      ],
+      "url": "https://github.com/rhythmicai/rhythmic/pull/644"
+    },
+    {
+      "repository": {
+        "nameWithOwner": "rhythmicai/rhythmic"
+      },
+      "number": 643,
+      "state": "MERGED",
+      "title": "Add Jest wrapper scripts for VS Code integration to handle CLI changes",
+      "body": "- Created documentation for Jest configuration in VS Code (JEST_VSCODE_SETUP.md).\r\n- Implemented PowerShell wrapper script (jest-vscode.ps1) for Windows to transform deprecated Jest CLI options.\r\n- Developed Node.js wrapper script (jest-vscode.js) for cross-platform compatibility.\r\n- Added Batch script (jest-vscode.bat) for Windows users.\r\n- Updated VS Code settings to utilize the new wrapper scripts, ensuring compatibility with Jest 30.x.\r\n- Included manual testing instructions and troubleshooting tips in the documentation.",
+      "createdAt": "2025-06-23T20:04:57Z",
+      "closedAt": "2025-06-23T20:12:32Z",
+      "mergedAt": "2025-06-23T20:12:32Z",
+      "author": {
+        "login": "chrisisagile"
+      },
+      "labels": [],
+      "url": "https://github.com/rhythmicai/rhythmic/pull/643"
+    },
+    {
+      "repository": {
+        "nameWithOwner": "rhythmicai/rhythmic"
+      },
+      "number": 641,
+      "state": "MERGED",
+      "title": "main -> 630 refresh",
+      "body": "",
+      "createdAt": "2025-06-23T19:25:48Z",
+      "closedAt": "2025-06-23T19:25:57Z",
+      "mergedAt": "2025-06-23T19:25:57Z",
+      "author": {
+        "login": "chrisisagile"
+      },
+      "labels": [],
+      "url": "https://github.com/rhythmicai/rhythmic/pull/641"
+    },
+    {
+      "repository": {
+        "nameWithOwner": "rhythmicai/rhythmic"
+      },
+      "number": 640,
+      "state": "MERGED",
+      "title": "fix: Update access control in HarmonyPackageBoard models to allow all…",
+      "body": "… users",
+      "createdAt": "2025-06-23T14:20:51Z",
+      "closedAt": "2025-06-23T14:20:59Z",
+      "mergedAt": "2025-06-23T14:20:59Z",
+      "author": {
+        "login": "chrisisagile"
+      },
+      "labels": [],
+      "url": "https://github.com/rhythmicai/rhythmic/pull/640"
+    }
+  ],
+  "metrics": {
+    "rhythmicai/rhythmic#645": {
+      "testAdditions": 0,
+      "docAdditions": 136,
+      "securityPatternMatches": 6,
+      "totalAdditions": 835,
+      "totalDeletions": 5,
+      "filesChanged": 37
+    },
+    "rhythmicai/rhythmic#644": {
+      "testAdditions": 9,
+      "docAdditions": 19,
+      "securityPatternMatches": 3,
+      "totalAdditions": 141,
+      "totalDeletions": 0,
+      "filesChanged": 10
+    },
+    "rhythmicai/rhythmic#643": {
+      "testAdditions": 55,
+      "docAdditions": 2,
+      "securityPatternMatches": 0,
+      "totalAdditions": 448,
+      "totalDeletions": 1390,
+      "filesChanged": 11
+    },
+    "rhythmicai/rhythmic#641": {
+      "testAdditions": 0,
+      "docAdditions": 0,
+      "securityPatternMatches": 0,
+      "totalAdditions": 3,
+      "totalDeletions": 3,
+      "filesChanged": 1
+    },
+    "rhythmicai/rhythmic#640": {
+      "testAdditions": 0,
+      "docAdditions": 0,
+      "securityPatternMatches": 0,
+      "totalAdditions": 3,
+      "totalDeletions": 3,
+      "filesChanged": 1
+    }
+  },
+  "report": {
+    "totalPRsAnalyzed": 5,
+    "reviewFocus": "test coverage",
+    "selectionCriteria": "last 5",
+    "analysisDate": "2025-07-03",
+    "metrics": {
+      "totalAdditions": 1430,
+      "totalDeletions": 1401,
+      "totalTestAdditions": 64,
+      "totalDocAdditions": 157,
+      "testToCodeRatio": 4.475524475524476,
+      "mergeRate": 100,
+      "averagePRSize": 0
+    },
+    "findings": [
+      "Low test coverage: 3.7% average test-to-code ratio",
+      "2 PRs contain potential security-sensitive changes",
+      "The average PR size is 0 changes, suggesting either placeholder PRs, automated PRs with no actual code modifications, or a potential issue with PR tracking or reporting.",
+      "Test coverage is critically low, with both the test-to-code ratio (4.5%) and the average test-to-code ratio (3.7%) far below industry standards, indicating insufficient automated testing.",
+      "Despite a 100% merge rate, there is evidence that PRs with potential security-sensitive changes are being merged without adequate review or testing.",
+      "The documentation ratio (11.0%) is higher than the test-to-code ratio, suggesting more emphasis on documentation than on testing, which may not be balanced for code quality.",
+      "There is no indication of failed PRs or rejected changes, which could point to a lack of rigorous code review or quality gates in the development workflow."
+    ],
+    "recommendations": [
+      "Implement mandatory test coverage requirements",
+      "Review security-sensitive changes carefully",
+      "Establish and enforce a minimum test coverage threshold (e.g., 70-80%) for all PRs before merging, especially for security-sensitive changes.",
+      "Implement automated test coverage reporting in the CI/CD pipeline to provide visibility and enforce quality standards.",
+      "Require security reviews and additional testing for PRs flagged as containing security-sensitive changes.",
+      "Investigate the cause of PRs with 0 changes and address any process or tooling issues that may be resulting in empty or ineffective PRs.",
+      "Encourage a balanced approach to documentation and testing by setting clear contribution guidelines that prioritize both."
+    ],
+    "risks": [
+      {
+        "level": "high",
+        "description": "Insufficient test coverage increases regression risk"
+      }
+    ]
+  }
+}
