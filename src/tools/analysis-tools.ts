@@ -32,6 +32,18 @@ export class AnalysisTools {
       return sorted.filter(pr => new Date(pr.createdAt) >= weekAgo);
     }
 
+    if (criteria === 'last-30-days') {
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      return sorted.filter(pr => new Date(pr.createdAt) >= thirtyDaysAgo);
+    }
+
+    if (criteria === 'last-90-days') {
+      const ninetyDaysAgo = new Date();
+      ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
+      return sorted.filter(pr => new Date(pr.createdAt) >= ninetyDaysAgo);
+    }
+
     if (criteria === 'open') {
       return sorted.filter(pr => pr.state === 'OPEN');
     }

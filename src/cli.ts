@@ -110,6 +110,8 @@ async function runAnalysis(options: any) {
           { title: 'Last 10 PRs', value: 'last 10' },
           { title: 'Largest 5 PRs', value: 'largest 5' },
           { title: 'Last week\'s PRs', value: 'last-week' },
+          { title: 'Last 30 days', value: 'last-30-days' },
+          { title: 'Last 90 days', value: 'last-90-days' },
           { title: 'All open PRs', value: 'open' },
           { title: 'Custom', value: 'custom' }
         ]

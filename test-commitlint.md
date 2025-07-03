@@ -1,2 +1,0 @@
-# Commitlint Test
-Test content

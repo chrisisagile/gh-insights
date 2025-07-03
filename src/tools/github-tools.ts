@@ -29,21 +29,44 @@ export class GitHubTools {
     if (this.ghCliAvailable) {
       try {
         const { stdout } = await execAsync(
-          `gh search prs "${query}" --limit=${limit} --json repository,number,state,title,body,createdAt,closedAt,mergedAt,author,labels,url`
+          `gh search prs "${query}" --limit=${limit} --json repository,number,state,title,body,createdAt,closedAt,author,labels,url`
         );
         const prs = JSON.parse(stdout);
-        // GitHub CLI returns state as lowercase, normalize to uppercase and check mergedAt
-        return prs.map((pr: any) => ({
-          ...pr,
-          state: pr.mergedAt ? 'MERGED' : pr.state.toUpperCase()
-        }));
+        
+        // For CLI results, we need to check each PR individually to get merge status
+        const enrichedPRs = await Promise.all(
+          prs.map(async (pr: any) => {
+            try {
+              const [owner, repo] = pr.repository.nameWithOwner.split('/');
+              const { stdout: prDetails } = await execAsync(
+                `gh pr view ${pr.number} --repo ${owner}/${repo} --json state,mergedAt`
+              );
+              const details = JSON.parse(prDetails);
+              
+              return {
+                ...pr,
+                state: details.mergedAt ? 'MERGED' : pr.state.toUpperCase(),
+                mergedAt: details.mergedAt || null
+              };
+            } catch (error) {
+              // If we can't get details, just use the original state
+              return {
+                ...pr,
+                state: pr.state.toUpperCase(),
+                mergedAt: null
+              };
+            }
+          })
+        );
+        
+        return enrichedPRs;
       } catch (error) {
         console.warn('Falling back to API:', error);
       }
     }
 
     // Fallback to API
-    const response = await this.octokit.search.issuesAndPullRequests({
+    const response = await this.octokit.rest.search.issuesAndPullRequests({
       q: `${query} is:pr`,
       per_page: Math.min(limit, 100),
       sort: 'created',
