@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
-
+insights/
+test-*/**/*
 # Build output
 dist/
 build/
