@@ -25,24 +25,24 @@ describe('GitHubAnalystAgent', () => {
     jest.clearAllMocks();
     
     // Mock file system operations
-    (mkdir as jest.Mock).mockResolvedValue(undefined);
-    (writeFile as jest.Mock).mockResolvedValue(undefined);
-    (readFile as jest.Mock).mockResolvedValue('{}');
+    (mkdir as any).mockResolvedValue(undefined as any);
+    (writeFile as any).mockResolvedValue(undefined as any);
+    (readFile as any).mockResolvedValue('{}' as any);
 
     // Mock tools
     mockGitHubTools = {
-      generateActivityReport: jest.fn().mockResolvedValue('/path/to/report.json'),
-      searchPRs: jest.fn().mockResolvedValue([]),
-      getPRDetails: jest.fn().mockResolvedValue({}),
-      getPRDiff: jest.fn().mockResolvedValue(''),
-      analyzePRMetrics: jest.fn().mockResolvedValue({
+      generateActivityReport: jest.fn(() => Promise.resolve('/path/to/report.json')),
+      searchPRs: jest.fn(() => Promise.resolve([])),
+      getPRDetails: jest.fn(() => Promise.resolve({})),
+      getPRDiff: jest.fn(() => Promise.resolve('')),
+      analyzePRMetrics: jest.fn(() => Promise.resolve({
         testAdditions: 10,
         docAdditions: 5,
         securityPatternMatches: 0,
         totalAdditions: 100,
         totalDeletions: 50,
         filesChanged: 5
-      })
+      }))
     } as any;
 
     mockAnalysisTools = {
@@ -68,12 +68,12 @@ describe('GitHubAnalystAgent', () => {
     } as any;
 
     mockCoachingTools = {
-      generateCoachingAdvice: jest.fn().mockResolvedValue('Great job!'),
+      generateCoachingAdvice: jest.fn(() => Promise.resolve('Great job!')),
       formatCoachingReport: jest.fn().mockReturnValue('# Coaching Report\n\nGreat job!')
     } as any;
 
     mockChatModel = {
-      invoke: jest.fn().mockResolvedValue({ content: '{"insights": [], "recommendations": []}' })
+      invoke: jest.fn(() => Promise.resolve({ content: '{"insights": [], "recommendations": []}' }))
     } as any;
 
     (GitHubTools as jest.MockedClass<typeof GitHubTools>).mockImplementation(() => mockGitHubTools);
@@ -111,10 +111,10 @@ describe('GitHubAnalystAgent', () => {
       mockAnalysisTools.selectPRs.mockReturnValue(mockPRs);
       
       // Mock reading activity report
-      (readFile as jest.Mock).mockResolvedValue(JSON.stringify({
+      (readFile as any).mockResolvedValue(JSON.stringify({
         user: 'testuser',
         summary: { totalPRs: 10, mergeRate: 80 }
-      }));
+      }) as any);
 
       await agent.analyze(config);
 
@@ -157,7 +157,7 @@ describe('GitHubAnalystAgent', () => {
 
       // Mock getUsername to return authenticated user
       const mockExec = require('child_process').exec;
-      mockExec.mockImplementation((cmd: string, cb: any) => {
+      mockExec.mockImplementation((_cmd: string, cb: any) => {
         cb(null, { stdout: 'authenticated-user\n' });
       });
 
@@ -234,12 +234,12 @@ describe('GitHubAnalystAgent', () => {
             'Document architectural decisions'
           ]
         })
-      });
+      } as any);
 
       await agent.analyze(config);
 
       expect(mockChatModel.invoke).toHaveBeenCalled();
-      const generatedReport = mockAnalysisTools.generateAnalysisResult.mock.results[0].value;
+      const generatedReport = mockAnalysisTools.generateAnalysisResult.mock.results[0].value as any;
       expect(generatedReport.findings).toContain('Good separation of concerns');
       expect(generatedReport.recommendations).toContain('Add integration tests');
     });

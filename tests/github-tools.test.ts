@@ -1,16 +1,31 @@
-import { describe, it, test, expect, jest, beforeEach } from '@jest/globals';
+import { describe, it, expect, jest, beforeEach } from '@jest/globals';
 import { GitHubTools } from '../src/tools/github-tools';
-import { Octokit } from '@octokit/rest';
+import { mkdir, writeFile } from 'fs/promises';
 import { exec } from 'child_process';
-import { writeFile, mkdir } from 'fs/promises';
 
-jest.mock('@octokit/rest');
-jest.mock('fs/promises');
+// Mock fs/promises
+jest.mock('fs/promises', () => ({
+  mkdir: jest.fn(),
+  writeFile: jest.fn()
+}));
 
 // Mock child_process with proper typing
 jest.mock('child_process', () => ({
   exec: jest.fn(),
   promisify: () => jest.fn()
+}));
+
+// Mock the Octokit module
+jest.mock('@octokit/rest', () => ({
+  Octokit: jest.fn().mockImplementation(() => ({
+    search: {
+      issuesAndPullRequests: jest.fn()
+    },
+    pulls: {
+      get: jest.fn(),
+      listFiles: jest.fn()
+    }
+  }))
 }));
 
 describe('GitHubTools', () => {
@@ -29,8 +44,16 @@ describe('GitHubTools', () => {
       }
     };
     
-    (Octokit as jest.MockedClass<typeof Octokit>).mockImplementation(() => mockOctokit);
+    // The MockOctokit class will be instantiated by GitHubTools
     githubTools = new GitHubTools('test-token');
+    
+    // Get the instance that was created
+    const octokitInstance = (githubTools as any).octokit;
+    
+    // Configure the mock methods
+    octokitInstance.search.issuesAndPullRequests = mockOctokit.search.issuesAndPullRequests;
+    octokitInstance.pulls.get = mockOctokit.pulls.get;
+    octokitInstance.pulls.listFiles = mockOctokit.pulls.listFiles;
   });
 
   describe('searchPRs', () => {
@@ -115,7 +138,7 @@ describe('GitHubTools', () => {
         }
       ]);
 
-      (exec as any).mockImplementation((cmd: string, cb: any) => {
+      (exec as any).mockImplementation((cmd: any, cb: any) => {
         if (cmd.includes('--version')) {
           cb(null, { stdout: 'gh version 2.0.0' });
         } else {
@@ -238,8 +261,8 @@ diff --git a/src/auth.js b/src/auth.js
       ];
 
       jest.spyOn(githubTools, 'searchPRs').mockResolvedValue(mockPRs);
-      (mkdir as jest.Mock).mockResolvedValue(undefined);
-      (writeFile as jest.Mock).mockResolvedValue(undefined);
+      (mkdir as any).mockImplementation(() => Promise.resolve());
+      (writeFile as any).mockImplementation(() => Promise.resolve());
 
       const reportPath = await githubTools.generateActivityReport('testuser', './test-output');
 
@@ -253,8 +276,8 @@ diff --git a/src/auth.js b/src/auth.js
       expect(reportPath).toContain('testuser');
       expect(reportPath).toContain('testuser-activity-report.json');
 
-      const writeCall = (writeFile as jest.Mock).mock.calls[0];
-      const reportData = JSON.parse(writeCall[1]);
+      const writeCall = (writeFile as any).mock.calls[0];
+      const reportData = JSON.parse(writeCall[1] as string);
       
       expect(reportData).toMatchObject({
         user: 'testuser',

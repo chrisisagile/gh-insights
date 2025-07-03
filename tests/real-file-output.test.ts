@@ -27,9 +27,9 @@ describe('Real File Output Tests', () => {
     // Mock only the API calls, not file operations
     jest.doMock('../src/tools/github-tools', () => ({
       GitHubTools: jest.fn().mockImplementation(() => ({
-        generateActivityReport: jest.fn().mockImplementation(async (username: string, outputDir: string) => {
+        generateActivityReport: jest.fn().mockImplementation(async (username, outputDir) => {
           const date = new Date().toISOString().split('T')[0];
-          const reportDir = join(outputDir, date);
+          const reportDir = join(outputDir as string, date);
           const reportPath = join(reportDir, 'activity-report.json');
           
           // Use real fs operations
@@ -67,13 +67,13 @@ describe('Real File Output Tests', () => {
             author: { login: 'testuser' },
             url: 'https://github.com/test/repo/pull/1'
           }
-        ]),
+        ] as any),
         getPRDetails: jest.fn().mockResolvedValue({
           additions: 100,
           deletions: 50,
           changedFiles: 5
-        }),
-        getPRDiff: jest.fn().mockResolvedValue('diff content'),
+        } as any),
+        getPRDiff: jest.fn().mockResolvedValue('diff content' as any),
         analyzePRMetrics: jest.fn().mockResolvedValue({
           testAdditions: 20,
           docAdditions: 10,
@@ -81,8 +81,8 @@ describe('Real File Output Tests', () => {
           totalAdditions: 100,
           totalDeletions: 50,
           filesChanged: 5
-        })
-      }))
+        } as any)
+      }) as any)
     }));
 
     jest.doMock('../src/tools/analysis-tools', () => ({
@@ -111,7 +111,7 @@ describe('Real File Output Tests', () => {
 
     jest.doMock('../src/tools/coaching-tools', () => ({
       CoachingTools: jest.fn().mockImplementation(() => ({
-        generateCoachingAdvice: jest.fn().mockResolvedValue('Great job! Keep improving.'),
+        generateCoachingAdvice: jest.fn(() => Promise.resolve('Great job! Keep improving.')),
         formatCoachingReport: jest.fn().mockImplementation((advice, username) => 
           `# Personal Development Coaching Report\n\n**Developer:** ${username}\n\n${advice}`)
       }))
@@ -119,9 +119,9 @@ describe('Real File Output Tests', () => {
 
     jest.doMock('@langchain/openai', () => ({
       ChatOpenAI: jest.fn().mockImplementation(() => ({
-        invoke: jest.fn().mockResolvedValue({ 
+        invoke: jest.fn(() => Promise.resolve({ 
           content: '{"insights": ["Good practices"], "recommendations": ["Add more tests"]}' 
-        })
+        }))
       }))
     }));
 

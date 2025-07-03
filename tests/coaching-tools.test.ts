@@ -16,7 +16,7 @@ describe('CoachingTools', () => {
       invoke: jest.fn()
     } as any;
 
-    (ChatOpenAI as jest.MockedClass<typeof ChatOpenAI>).mockImplementation(() => mockModel);
+    (ChatOpenAI as any).mockImplementation(() => mockModel);
     coachingTools = new CoachingTools('test-api-key', 'gpt-4');
   });
 
@@ -103,7 +103,7 @@ Keep up the excellent work!`;
         expect.any(HumanMessage)
       ]);
 
-      const message = (mockModel.invoke.mock.calls[0][0][0] as HumanMessage).content as string;
+      const message = (mockModel.invoke.mock.calls[0][0] as any)[0].content as string;
       expect(message).toContain('testuser');
       expect(message).toContain('50');
       expect(message).toContain('80%');

@@ -1,0 +1,53 @@
+{
+  "user": "testuser",
+  "generatedAt": "2025-01-15T00:00:00.000Z",
+  "summary": {
+    "totalPRs": 2,
+    "openPRs": 1,
+    "closedPRs": 0,
+    "mergedPRs": 1,
+    "mergeRate": "50.0",
+    "last30Days": {
+      "totalPRs": 0,
+      "mergedPRs": 0,
+      "mergeRate": "0"
+    },
+    "last90Days": {
+      "totalPRs": 0,
+      "mergedPRs": 0,
+      "mergeRate": "0"
+    }
+  },
+  "repositories": [
+    {
+      "repo": "org/repo1",
+      "count": 2
+    }
+  ],
+  "monthlyActivity": [
+    {
+      "month": "2025-01",
+      "count": 1
+    },
+    {
+      "month": "2024-11",
+      "count": 1
+    }
+  ],
+  "recentPRs": [
+    {
+      "repo": "org/repo1",
+      "number": 1,
+      "title": "PR 1",
+      "state": "MERGED",
+      "createdAt": "2025-01-10T00:00:00Z"
+    },
+    {
+      "repo": "org/repo1",
+      "number": 2,
+      "title": "PR 2",
+      "state": "OPEN",
+      "createdAt": "2024-11-01T00:00:00Z"
+    }
+  ]
+}

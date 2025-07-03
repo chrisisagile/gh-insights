@@ -30,14 +30,14 @@ describe('File Output Tests', () => {
     writeFileContents = new Map();
     
     // Mock file system operations
-    mockWriteFile = jest.fn().mockImplementation((path: string, content: string) => {
+    mockWriteFile = jest.fn().mockImplementation((path: any, content: any) => {
       writeFileContents.set(path, content);
       return Promise.resolve();
-    });
+    }) as any;
     
-    mockMkdir = jest.fn().mockResolvedValue(undefined);
+    mockMkdir = jest.fn(() => Promise.resolve()) as any;
     
-    mockReadFile = jest.fn().mockImplementation((path: string) => {
+    mockReadFile = jest.fn().mockImplementation((path: any) => {
       if (path.includes('activity-report.json')) {
         return Promise.resolve(JSON.stringify({
           user: 'testuser',
@@ -45,11 +45,11 @@ describe('File Output Tests', () => {
         }));
       }
       return Promise.resolve(writeFileContents.get(path) || '{}');
-    });
+    }) as any;
     
-    (writeFile as jest.Mock) = mockWriteFile;
-    (mkdir as jest.Mock) = mockMkdir;
-    (readFile as jest.Mock) = mockReadFile;
+    (writeFile as any) = mockWriteFile;
+    (mkdir as any) = mockMkdir;
+    (readFile as any) = mockReadFile;
   });
 
   it('should create correct directory structure', async () => {
