@@ -200,6 +200,42 @@ npm run lint
 npm run format
 ```
 
+## Observability with LangSmith
+
+This tool includes built-in observability using [LangSmith](https://smith.langchain.com/) to track AI operations and performance.
+
+### Setup LangSmith (Optional)
+
+1. **Create a LangSmith account** at https://smith.langchain.com/
+2. **Get your API key** from the settings page
+3. **Add LangSmith configuration** to your `.env` file:
+
+```bash
+# LangSmith Configuration (optional)
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+LANGCHAIN_API_KEY=your_langsmith_api_key_here
+LANGCHAIN_PROJECT=gh-insights
+```
+
+### What Gets Traced
+
+With LangSmith enabled, you can observe:
+
+- **Main analysis workflow**: Complete GitHub analysis pipeline
+- **Individual step performance**: Overview generation, PR selection, analysis, etc.
+- **AI model calls**: OpenAI API interactions for insights and coaching
+- **GitHub API interactions**: Search queries, PR fetching, and metrics analysis
+- **Error tracking**: Failed operations and their contexts
+
+### Benefits
+
+- **Performance monitoring**: Track analysis speed and identify bottlenecks
+- **Quality assurance**: Review AI-generated insights and coaching advice
+- **Usage analytics**: Understand which analysis types are most common
+- **Debugging**: Trace issues in the analysis pipeline
+- **Cost tracking**: Monitor OpenAI API usage and costs
+
 ## Contributing
 
 Contributions are welcome! Please:

@@ -4,6 +4,7 @@ import { promisify } from 'util';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { GitHubPR, PRMetrics } from '../types/index.js';
+import { traceable } from 'langsmith/traceable';
 
 const execAsync = promisify(exec);
 
@@ -25,7 +26,7 @@ export class GitHubTools {
     }
   }
 
-  async searchPRs(query: string, limit: number = 100): Promise<GitHubPR[]> {
+  searchPRs = traceable(async (query: string, limit: number = 100): Promise<GitHubPR[]> => {
     if (this.ghCliAvailable) {
       try {
         const { stdout } = await execAsync(
@@ -90,9 +91,9 @@ export class GitHubTools {
       labels: item.labels.map(l => ({ name: typeof l === 'string' ? l : l.name || '' })),
       url: item.html_url
     }));
-  }
+  }, { name: 'github_search_prs' });
 
-  async getPRDetails(owner: string, repo: string, prNumber: number): Promise<any> {
+  getPRDetails = traceable(async (owner: string, repo: string, prNumber: number): Promise<any> => {
     if (this.ghCliAvailable) {
       try {
         const { stdout } = await execAsync(
@@ -125,9 +126,9 @@ export class GitHubTools {
       baseRefName: data.base.ref,
       isDraft: data.draft
     };
-  }
+  }, { name: 'github_get_pr_details' });
 
-  async getPRDiff(owner: string, repo: string, prNumber: number): Promise<string> {
+  getPRDiff = traceable(async (owner: string, repo: string, prNumber: number): Promise<string> => {
     if (this.ghCliAvailable) {
       try {
         const { stdout } = await execAsync(
@@ -149,7 +150,7 @@ export class GitHubTools {
     });
 
     return data as unknown as string;
-  }
+  }, { name: 'github_get_pr_diff' });
 
   async getPRFiles(owner: string, repo: string, prNumber: number): Promise<any[]> {
     const { data } = await this.octokit.pulls.listFiles({
@@ -167,7 +168,7 @@ export class GitHubTools {
     }));
   }
 
-  async analyzePRMetrics(diff: string, prDetails: any): Promise<PRMetrics> {
+  analyzePRMetrics = traceable(async (diff: string, prDetails: any): Promise<PRMetrics> => {
     const lines = diff.split('\n');
     
     // Count test additions
@@ -196,7 +197,7 @@ export class GitHubTools {
       totalDeletions: prDetails.deletions || 0,
       filesChanged: prDetails.changedFiles || 0
     };
-  }
+  }, { name: 'github_analyze_pr_metrics' });
 
   async generateActivityReport(username: string, outputDir: string): Promise<string> {
     const date = new Date().toISOString().split('T')[0];

@@ -1,6 +1,7 @@
 import { ChatOpenAI } from '@langchain/openai';
 import { HumanMessage } from '@langchain/core/messages';
 import { AnalysisResult } from '../types/index.js';
+import { traceable } from 'langsmith/traceable';
 
 export class CoachingTools {
   private model: ChatOpenAI;
@@ -13,11 +14,11 @@ export class CoachingTools {
     });
   }
 
-  async generateCoachingAdvice(
+  generateCoachingAdvice = traceable(async (
     activityReport: any,
     analysisResult: AnalysisResult,
     username: string
-  ): Promise<string> {
+  ): Promise<string> => {
     const prompt = `You are a senior software engineer with 15+ years of experience, known for mentoring and developing talent. 
 You're reviewing a peer's GitHub activity and code quality metrics to provide constructive, actionable coaching advice.
 
@@ -64,7 +65,7 @@ Include practical tips they can implement immediately. Make it personal and acti
     const response = await this.model.invoke([new HumanMessage(prompt)]);
     
     return response.content as string;
-  }
+  }, { name: 'coaching_generate_advice' });
 
   formatCoachingReport(coachingAdvice: string, username: string): string {
     const date = new Date().toISOString().split('T')[0];
